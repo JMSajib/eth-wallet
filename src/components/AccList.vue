@@ -1,15 +1,10 @@
 <template>
     <div id="acclist">
-          <div class="wrap">
-              <h2> List of Accounts </h2>
-              <hr align="left">
-              <Account v-for="account in accounts" :key="account.address"
-                v-bind:address="account.address"
-                v-bind:ethamount="account.amount"
-              />
-              <h3><u>Total amount of ETH:</u> {{totalETH}} ETH</h3>
-              <hr align="left">
-          </div>
+		<Account v-for="account in accounts" :key="account.address"
+		v-bind:address="account.address"
+		v-bind:ethamount="account.amount"
+		/>
+		<p><b>Total amount of ETH:</b> {{totalETH}} ETH</p>
     </div>
 </template> 
 

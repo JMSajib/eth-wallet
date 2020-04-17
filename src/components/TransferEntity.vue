@@ -1,19 +1,26 @@
-
 <template>
-  <div id="transferentity">
-    <h2> Transfering </h2>
-    <p> Sending Address </p>
-    <input type="text" v-model.trim="sendAddr"/> 
-    <br/>
-    <p> Receiving Address </p>
-    <input type="text" v-model.trim="receiveAddr"/> 
-    <br/>
-    <p> Amount in ETH </p>
-    <input type="text" v-model.trim="amount"/> 
-    <br/>
-    <br/>
-    <input type="submit" value="Transfer ETH" v-on:click="transfer"/>
-  </div>
+	<div class="uk-card uk-card-default uk-card-body">
+		<form>
+			<fieldset class="uk-fieldset">
+
+				<legend class="uk-legend">ETH Balance Transfer</legend>
+
+				<div class="uk-margin">
+					<input class="uk-input" type="text" v-model.trim="sendAddr" placeholder="Sending Address"/>
+				</div>
+				
+				<div class="uk-margin">
+					<input class="uk-input" type="text" v-model.trim="receiveAddr" placeholder="Receiving Address"/>
+				</div>
+				
+				<div class="uk-margin">
+					<input class="uk-input" type="text" v-model.trim="amount" placeholder="Amount (ETH)"/>
+				</div>
+				
+				<input type="submit" value="Transfer" v-on:click="transfer" class="uk-button uk-button-primary uk-width-1-1"/>
+			</fieldset>
+		</form>
+	</div>
 </template>
 
 <script>
@@ -31,10 +38,10 @@ export default {
       try {
       await ethclient.eth.sendTransaction({from:this.sendAddr, to:this.receiveAddr, value: ethclient.utils.toWei(this.amount, "ether"), gas:21000})
       .then(r => { 
-        this.$swal('Transaction succeeded.', 'Transaction hash:' + r.transactionHash, 'OK');
+          this.$swal('Transaction succeeded.', 'Transaction hash:' + r.transactionHash, 'OK');
         });
         setTimeout(function() {
-          location.reload();//reload page
+          location.reload();
         }, 5000);
     }
     catch(Error){alert(Error.toString())}},

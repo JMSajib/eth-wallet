@@ -1,7 +1,11 @@
 <template>
-  <div id="wallet">
-    <AccList/>
-    <TransferEntity/>
+  <div class="uk-child-width-1-2@s uk-grid" id="wallet">
+	<div class="uk-first-column">
+		<AccList/>
+	</div>
+	<div>
+		<TransferEntity/>
+	</div>
   </div>
 </template>
 
